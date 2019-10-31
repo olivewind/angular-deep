@@ -55,7 +55,10 @@ class SayHello {
 // 等价于
 @NgModule({
   providers: [
-    provide: ServiceA, useClass: ServiceA
+    {
+      provide: ServiceA,
+      useClass: ServiceA
+    }
   ]
 })
 ```
@@ -65,7 +68,10 @@ class SayHello {
 ```typescript
 @NgModule({
   providers: [
-    provide: ServiceA, useClass: ServiceB
+    {
+      provide: ServiceA,
+      useClass: ServiceB
+    }
   ]
 })
 ```
@@ -75,7 +81,10 @@ class SayHello {
 ```typescript
 @NgModule({
   providers: [
-    provide: ServiceA, useExisting: ServiceB
+    {
+      provide: ServiceA,
+      useExisting: ServiceB
+    }
   ]
 })
 ```
@@ -88,7 +97,10 @@ const ServiceA = new InjectionToken<IServiceA>('service.a');
 
 @NgModule({
   providers: [
-    provide: ServiceA, useValue: 'i am a service'
+    {
+      provide: ServiceA,
+      useValue: 'i am a service'
+    }
   ]
 })
 ```
@@ -97,7 +109,7 @@ const ServiceA = new InjectionToken<IServiceA>('service.a');
 
 ```typescript
 
-let serviceAFactory = (b: B) => {
+const serviceAFactory = (b: B) => {
   return new ServiceA(b);
 };
 
