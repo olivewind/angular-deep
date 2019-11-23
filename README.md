@@ -11,7 +11,7 @@
 ## 课程大纲
 
 #### [第 01 节课：变更检测](https://github.com/olivewind/angular-deep/issues/1)
- * 各个前端框架如何实现异步变更检测
+ * 各个前端框架如何实现变更的检测(数据变化 -> 视图更新)
  * Angular2+ 相比 Angular1 如何做到性能大幅度提升
  * 变更检测实现原理：`zone.js`
  * 变更检测策略
