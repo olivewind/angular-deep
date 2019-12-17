@@ -10,6 +10,18 @@
 
 > 已经找到志同道合的朋友一起编写同名开源电子书(前两章将会重新编写)，欢迎持续关注。
 
+## 作者
+
+[王力国](https://github.com/olivewind)，
+[董士浩](https://github.com/s33h0w)，
+[徐浪](https://github.com/wave9)，
+[王玉略](https://github.com/WangYuLue)、
+[何莉](https://github.com/ehlilier)，
+[黄元珍](https://github.com/huangyuanzhen)，
+[李琳](https://github.com/githubOfLiLin)，
+[张莹华](https://github.com/gemmaorying)，
+[李宏亮](https://github.com/ls365882248)
+
 ## 章节
 
 ### [第 01 章：变更检测](https://github.com/olivewind/angular-deep/issues/1)
