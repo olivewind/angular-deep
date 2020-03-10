@@ -5,6 +5,7 @@
   Angular 的路由是基于配置的，因此我们可以使用非常简单的方式来组织我们的应用，通常只要以下几步
 
 #### 2.1.1 配置路由表
+
 ``` typescript
 import { RouterModule, Routes } from '@angular/router';
 
@@ -96,32 +97,64 @@ const routes: Routes = [
 为了优化应用首屏加载速度，通常我们会对路由实行懒加载，只有路由激活的时候才真正去加载相关代码，在 Angular 中只需要对路由稍作调整即可实现路由懒加载
 
 ``` typescript
-  const routes: Routes = [
-    {
-      path: 'module-a',
-      loadChildren: () => import('./module-a/module-a.module').then(m => m.ModuleAModule),
-    },
-    {
-      path: 'module-b',
-      loadChildren: () => import('./module-b/module-b.module').then(m => m.ModuleBModule),
-    },
-  ];
+const routes: Routes = [
+  {
+    path: 'module-a',
+    loadChildren: () => import('./module-a/module-a.module').then(m => m.ModuleAModule),
+  },
+  {
+    path: 'module-b',
+    loadChildren: () => import('./module-b/module-b.module').then(m => m.ModuleBModule),
+  },
+];
 ```
 
-  注意到上面的代码中出现了 `import('module')` 的语法，该方法将会动态加载一个 JavaScript 文件并返回一个 Promise，正是它帮我们实现了路由懒加载
+注意到上面的代码中出现了 `import('module')` 的语法，该方法将会动态加载一个 JavaScript 文件并返回一个 Promise，正是它帮我们实现了路由懒加载
 
-  实际上 `import('module')` 语法还只有少量浏览器版本，比如 Chorme 63 以上版本被支持，那为何我们还可以使用呢？实际上这多亏了打包工具 Webpack，实际上这一切的背后并没有什么魔法。
+实际上 `import('module')` 语法还只有少量浏览器版本，比如 Chorme 63 以上版本被支持，那为何我们还可以使用呢？实际上这多亏了打包工具 Webpack，实际上这一切的背后并没有什么魔法，其原理非常简单，我们可以写一个简单 [Webpack Demo](./webpack-lazyload) 来一探究竟
 
-// TODO
+
+``` javascript
+// lazyload.js
+console.log('hello world');
+
+```
+
+``` javascript
+// main.js
+setTimeout(() => {
+  console.log('app start');
+  import('./lazyload')
+    .then((m) => {
+      console.log(m.hello());
+    });
+}, 2000);
+```
+
+该程序会在两秒钟后懒加载一个模块，并调用其中 `hello` 函数，打开浏览器我们可以看到
+
+![image](https://user-images.githubusercontent.com/17901361/76287969-9ded6a80-62e0-11ea-8a54-ab02f19d1ed5.png)
+
+查看网路请求可以看到动态请求了一段脚本如下
+
+``` javascript
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],[,function(o,n,c){"use strict";function e(){console.log("hello world")}c.r(n),c.d(n,"hello",(function(){return e}))}]]);
+```
+
+其中一个关键词是 `webpackJsonp`，我们再看一下 dom 结构就更加明了了
+
+![image](https://user-images.githubusercontent.com/17901361/76287734-1dc70500-62e0-11ea-9d3c-598d3794e8cd.png)
+
+`main.js 执行` ->  `等待两秒` ->  `通过 script 标签加载 js` -> `通过 jsonp(回调)的方式取得模块内容` -> `执行 hello 方法`
 
 
 ### 2.6 路由切换
 
 - 2.5.1 编程式切换路由
 
-    通过 `navigateByUrl`
+  通过 `navigateByUrl`
 
-    通过 `navigate`
+  通过 `navigate`
 
 - 2.5.2 声明式切换路由
 
