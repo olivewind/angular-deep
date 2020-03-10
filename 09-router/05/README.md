@@ -26,6 +26,7 @@
 
 基于上述规律我们可以将其映射到 Angular 的路由模块上
 
+``` typescript
     const routes: Routes = [
       {
     		path: 'issues',
@@ -40,34 +41,39 @@
     		component: ViewIssueComponent，
     	},
     ];
+```
 
 ### 5.3 部署到生产环境
 
 默认的 Angular 路由是基于 history 模式，也就是说在生产环境中如果你直接访问 `[www.exmaple.com/angular-router](http://www.exmaple.com/angular-router)` 将会访问到一个 404 页面，原因是在服务器上并没有对应资源，而 Angular 的路由模块是用于处理前端路由的，因此我们需要对服务器的配置稍作修改，以 nginx 为例
 
-    server {
-        listen 80;
-        server_name  localhost;
-        root /web/dist/;
-        index  index.html;
-        # 如果找不到对应资源的话就返回 index.html，将路由控制权交给前端
-        location / {
-            index  index.html index.htm;
-            try_files $uri $uri/ /index.html;
-        }
-    		# ...
-    }
+``` conf
+server {
+  listen 80;
+  server_name  localhost;
+  root /web/dist/;
+  index  index.html;
+  # 如果找不到对应资源的话就返回 index.html，将路由控制权交给前端
+  location / {
+      index  index.html index.htm;
+      try_files $uri $uri/ /index.html;
+  }
+  # ...
+}
+```
 
 还有一种更简单的部署方式就是开始 hash 模式，这种模式下我们无需修改服务器配置
 
-    @NgModule({
-      imports: [
-        RouterModule.forRoot(
-          routes,
-    	    {
-    		    useHash: true,
-          }
-        )],
-      exports: [RouterModule],
-    })
-    export class RouteRoutingModule { }
+``` typescript
+@NgModule({
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      {
+        useHash: true,
+      }
+    )],
+  exports: [RouterModule],
+})
+export class RouteRoutingModule { }
+```
