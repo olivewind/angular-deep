@@ -16,7 +16,7 @@
 
   这三种事件都有一个共同的特点：都是异步事件。因此可以得出总结，当异步操作执行后，应用的状态也会随之改变。这个时候就会通知 angular 去更新视图了。
 
-### 1.3 三大框架简单对比
+### 1.3 JS 框架简单对比
 
   #### React: Vitual DOM
 
@@ -26,6 +26,30 @@
 
   #### Angular 2: zonejs
 
+  Angular 程序是一个一个组件组成的，而每个组件都有一个单独的检测器。Angualr 在运行时会为每一个组件都创建一个变更检测器。在 angular 的源码中，有一个 ApplicationRef 用于监听 NgZone 的 onTurnDone 事件，无论什么时候这个事件被触发，都会执行 tick() 方法，这个函数就是用来执行变更检测的。
+
+   ```
+  class ApplicationRef {
+
+    changeDetectorRefs:ChangeDetectorRef[] = [];
+
+    constructor(private zone: NgZone) {
+      this.zone.onTurnDone
+        .subscribe(() => this.zone.run(() => this.tick());
+    }
+
+    tick() {
+      this.changeDetectorRefs
+        .forEach((ref) => ref.detectChanges());
+    }
+  }
+   ```
+
+  #### AngularJS
+
+  “我不知道什么发生了变化，因此我会检测所有可能会更新的东西。”
+
+  Angular.js 通过重新渲染页面中绑定的数据，来确定数据是否发生了变化。
   
 
 
