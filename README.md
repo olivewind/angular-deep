@@ -136,9 +136,13 @@
 ---
 
 ### 第 10 章：Http Client
-* 基本使用
-* 基于 Observable 的实现
-* 拦截器的实现原理
+[第一节：基本使用](./10-httpclient/01/README.md)
+
+[第二节：HttpRequest](./10-httpclient/02/README.md)
+
+[第三节：HttpXhrBackend](./10-httpclient/03/README.md)
+
+[第四节：拦截器](./10-httpclient/04/README.md)
 
 ---
 
