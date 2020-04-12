@@ -11,14 +11,7 @@
 ## 作者
 
 [王力国](https://github.com/olivewind)，
-[董士浩](https://github.com/s33h0w)，
-[徐浪](https://github.com/wave9)，
-[王玉略](https://github.com/WangYuLue)、
-[何莉](https://github.com/ehlilier)，
-[黄元珍](https://github.com/huangyuanzhen)，
-[李琳](https://github.com/githubOfLiLin)，
-[张莹华](https://github.com/gemmaorying)，
-[李宏亮](https://github.com/ls365882248)
+[李琳](https://github.com/githubOfLiLin)
 
 ## 章节
 
