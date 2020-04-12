@@ -28,91 +28,16 @@
 ---
 
 ### 第 03 章：Rxjs
-* 基本使用
-* 常用操作符
-* 使用技巧
-* 调试技巧
-* 自己实现一个 Rxjs
-* 在 Angular 里使用 Rxjs
-
----
 
 ### 第 04 章：模块
 
----
-
 ### 第 05 章：指令
-* 结构型指令
-* 属性型指令
-* 自定义指令
-* 内置指令实现原理
-    * `ngIf`
-    * `ngClass`
-    * `ngStyle`
-    * `ngFor`
-    * `ngSwitch`
-
----
 
 ### 第 06 章：组件
-* 基本使用
-    * 基本语法
-    * 输入和输出
-    * 表达式操作符
-    * 模板引用变量
-    * 上下文
-* 双向数据绑定
-* 模板语法 vs JSX
-* 生命周期
-* 组件引用
-    * `@ViewChild`
-    * `@ContentChild`
-* 内容投影
-* 组件的样式
-    * 样式编写方式
-    * 样式封装策略
-        * Native
-        * ShadowDom
-        * Emulated
-        * None
-    * 特殊的选择器
-        * :host
-        * :host-context
-* 动态组件和懒加载组件
-* Web Component
-
----
 
 ### 第 07 章：管道
-* 基本使用
-* 纯管道
-* 非纯管道
-* 自定义管道
-* 管道的内部实现
-
----
 
 ### 第 08 章：表单
-* `ControlValueAccessor` 做了哪些事情
-    * 变更视图
-    * 响应视图变更
-    * 表单模型
-* 响应式表单和模板驱动表单中的数据流
-    * 响应式表单
-        * FormControlDirective
-        * 从视图到模型
-        * 从模型到视图
-    * 模板驱动表单
-* NgModel
-    * 从视图到模型
-    * 从模型到视图
-* Angular 表单的设计哲学
-    * 对比 React 表单
-* 创建一个表单控件
-    * 指令方式
-    * 组件方式
-
----
 
 ### 第 09 章：路由导航
 
@@ -140,25 +65,6 @@
 ---
 
 ### 第 11 章：动画
-* 动画要点
-    * Angular 的动画系统是基于 CSS 功能构建的
-    * 状态 state() 和样式 style()
-    * 转场动画
-    * *，void， :enter， :leave， :increment， :decrement
-    * 动画回调
-* 高阶动画函数与路由动画
-    * query()，stager()
-    * group()，sequence()
-    * 父子动画
-    * 路由动画
-    * 使用 AnimationOptions 接口创建可复用的动画
-* 命令式与声明式动画
-* @angular/animations 设计哲学
-* @angular/animations/browser 与跨平台动画渲染
-* 基于 WAAPI 构建高性能 Angular 动画
-
----
-
 
 ### 第 12 章：性能优化
 
